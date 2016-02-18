@@ -1,0 +1,74 @@
+doctype html
+html
+head
+  title SimpleSinatra
+  link*{rel:'stylesheet', href: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'}
+  script*{type: 'text/javascript', src: '//code.jquery.com/jquery-2.2.0.min.js'}
+  script*{type: 'text/javascript', src: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
+body
+  nav.navbar.navbar-default.navbar-static-top.navbar-inverse
+    .container
+      ul.nav.navbar-nav
+        li.active
+          a href="/"
+           span.glyphicon.glyphicon-home
+           = " Sinatra Product Demo"
+        li
+          a href="https://app.contentful.com"
+            span.glyphicon.glyphicon-cog
+            = " Contentful Dashboard"
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+            span.glyphicon.glyphicon-info-sign
+            = " Developer Center "
+            span.caret
+          ul.dropdown-menu role="menu"
+            li
+              a href="https://www.contentful.com/developers/docs/"
+                = " API Reference"
+
+  .jumbotron.text-center
+    .container
+      a.lang-logo href="/"
+        img*{src: "https://www.contentful.com/assets/images/logos/contentful-dark-1a51a42b.svg"}
+      h1 Sinatra Product Demo
+
+      br
+      br
+
+      p
+        = "This is a demo of how to use Sinatra and Contentful. "
+
+      h3 Space Configuration
+      p
+        = "If you want editable content, please provide values of your Product Demo Space."
+        br
+        = "The included values here are from our Read-Only Demo."
+        br
+        = "You can read more how to do this on the README.md file."
+      form.form.form-fluid
+        .form-group
+          label Space ID - Obtained from your Space Configuration
+          input.form-control#space*{name: 'space', type: 'text', value: 'swvvfxlfblv8', placeholder: 'Provide your Space ID...'}
+        .form-group
+          label Access Token - Obtained from your Space API Keys
+          input.form-control#token*{name: 'token', type: 'text', value: '49d26acf33f1221ede35b490c9d72880627e45ad1e39aa9355183cca8d3a757c', placeholder: 'Provide your Access Token'}
+        .form-group
+          label Content Type ID - Obtained from your Product Content Type JSON Preview
+          input.form-control#content_type*{name: 'content_type', type: 'text', value: '2PqfXUJwE8qSYKuM0U6w8M', placeholder: 'Provide your Content Type ID...'}
+      a.to-products.btn.btn-lg.btn-success*{type:"button", href: '#'}
+        span.glyphicon.glyphicon-edit
+        = " To Products"
+
+  .container
+    .alert.alert-info.text-center role="alert"
+      p
+        = "To customize this demo with your own data, you will require a Contentful account."
+      p
+        = "You can get one by clicking the link below."
+
+      br
+
+      a.btn.btn-lg.btn-warning*{type: "button", href: "https://www.contentful.com/sign-up/#starter"}
+       = " Sign Up"
+  script*{type: 'text/javascript', src: '/app.js'}

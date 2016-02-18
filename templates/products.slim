@@ -1,0 +1,81 @@
+doctype html
+html
+head
+  title SimpleSinatra
+  link*{rel:'stylesheet', href: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'}
+  script*{type: 'text/javascript', src: '//code.jquery.com/jquery-2.2.0.min.js'}
+  script*{type: 'text/javascript', src: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
+body
+  nav.navbar.navbar-default.navbar-static-top.navbar-inverse
+    .container
+      ul.nav.navbar-nav
+        li.active
+          a href="/"
+           span.glyphicon.glyphicon-home
+           = " Sinatra Product Demo"
+        li
+          a href="https://app.contentful.com"
+            span.glyphicon.glyphicon-cog
+            = " Contentful Dashboard"
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+            span.glyphicon.glyphicon-info-sign
+            = " Developer Center "
+            span.caret
+          ul.dropdown-menu role="menu"
+            li
+              a href="https://www.contentful.com/developers/docs/"
+                = " API Reference"
+
+  .container
+    .col-md-offset-2
+      h1 Products
+
+    / Iterate over each Product fetched from Contentful's API
+    - products.each do |product|
+      .row.col-md-12.col-md-offset-2
+
+        - unless product.image.nil? || product.image.empty?
+          .col-md-2
+            / Render image with 140px width and use it's title as description text
+            img*{src: product.image.first.image_url(w: 140), alt: product.image.first.title}
+
+        .col.md-6
+          / Render product name and brand's name and website
+          h4
+            = product.product_name
+            - unless product.brand.nil?
+              small
+                = " by "
+                a*{href: product.brand.website}
+                  = product.brand.company_name
+
+          - unless product.categories.nil? || product.categories.empty?
+            h6
+              / Render product categories separated by comma
+              = product.categories.map(&:title).join(', ')
+
+          / Render product description
+          p.small = "#{product.product_description.slice(0, 100)}..."
+
+          / Render CTA with product's website
+          a.btn.btn-warning*{href: product.website}
+            = "Buy Now!"
+
+          / Render product tags if present
+          - unless product.tags.nil? || product.tags.empty?
+            h6
+              = "Tags: "
+              small
+                = product.tags.join(', ')
+
+        / Render all product images if more than 1 present
+        - if !product.image.nil? && product.image.size > 1
+          .col-md-6
+            h6 All Images
+            .row
+              - product.image.each do |image|
+                .col-md-1
+                  img*{src: image.image_url(w: 40), alt: image.title}
+        br
+        br
