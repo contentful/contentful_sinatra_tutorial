@@ -1,4 +1,4 @@
-# Creating your own Contentful and Rails Application
+# Creating your own Contentful and Sinatra Application
 
 ## Create your Sinatra application
 
