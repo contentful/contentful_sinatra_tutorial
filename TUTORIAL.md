@@ -57,7 +57,7 @@ To use this method, you need to follow then next simple steps:
 * Create a ContentfulHelper module:
 
 ```ruby
-class ContentfulHelper
+module ContentfulHelper
   def contentful(space, token)
     @client ||= Contentful::Client.new(
       space: space,
