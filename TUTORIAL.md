@@ -89,10 +89,9 @@ With this approach, if you have multiple Sinatra Sub-applications, you can add t
 You can check how we use them in our example application [here](./templates/products.slim). The example uses `slim` as a template engine,
 but the code should be easily transferable to any other engine.
 
-## This is just the beggining
+## This is just the beginning
 
-This is just a very simple tutorial to get things running, but every project has different needs, and we want to provide you
-with the best solutions we can.
+This is just a very simple tutorial to get things running, but every project has different needs, and we want to provide you with the best solutions we can.
 
 ## Providing Feedback
 
