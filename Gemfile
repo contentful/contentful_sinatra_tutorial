@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem "sinatra"
-gem "rack-protection", "~> 1.5", "> 1.5.3"
+gem "rack-protection", "~> 2.2"
 gem "thin"
 gem "slim", "~> 3.0"
 
